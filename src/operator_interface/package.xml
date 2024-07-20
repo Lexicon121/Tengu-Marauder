@@ -1,7 +1,7 @@
 <package format="2">
-  <name>xbee_comm</name>
+  <name>operator_interface</name>
   <version>0.0.0</version>
-  <description>Package for Xbee communication node</description>
+  <description>Operator interface for sending commands</description>
   <maintainer email="your_email@example.com">Your Name</maintainer>
   <license>License declaration</license>
   <buildtool_depend>ament_cmake</buildtool_depend>

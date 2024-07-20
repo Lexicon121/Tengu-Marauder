@@ -1,0 +1,12 @@
+<package format="2">
+  <name>command_node</name>
+  <version>0.0.0</version>
+  <description>Package for command node</description>
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>License declaration</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>rclpy</build_depend>
+  <exec_depend>rclpy</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+</package>

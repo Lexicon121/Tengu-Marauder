@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'command_node'
+package_name = 'operator_interface'
 
 setup(
     name=package_name,
@@ -15,12 +15,12 @@ setup(
     zip_safe=True,
     maintainer='Your Name',
     maintainer_email='your_email@example.com',
-    description='Package for command node',
+    description='Operator interface for sending commands',
     license='License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'command_node = command_node.command_node:main'
+            'operator_interface = operator_interface.operator_interface:main'
         ],
     },
 )
