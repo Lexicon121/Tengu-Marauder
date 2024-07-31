@@ -1,0 +1,5 @@
+pyserial
+digi-xbee
+setuptools
+numpy
+matplotlib
