@@ -1,54 +1,51 @@
 # Tengu Marauder
 
-![Tengu Marauder Image](https://i.imgur.com/9w0ZMyg.gif)
+Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 for advanced communication and control functionalities. This project leverages XBee modules for wireless communication and provides a modular framework for various robotic components, including motor control, data processing, and operator interfaces.
 
 ## Features
-
-- **Multi-Terrain Movement:** Navigate through diverse terrains with ease.
-- **Wireless Testing:** Advanced tools and capabilities for thorough wireless testing.
-- **Autonomous Operation:** Set it and forget it – the Tengu Marauder operates autonomously, ensuring thorough testing without constant oversight.
-- **Integration with Strix Interceptor:** Designed to work seamlessly with the Strix Interceptor for enhanced capabilities.
+- **Motor Control**: Manage and control the motors of the robotic platform.
+- **XBee Communication**: Wireless communication using XBee modules.
+- **ESP32 Integration**: Interface with ESP32 for additional functionalities.
+- **Data Processing**: Handle and process sensor data.
+- **Operator Interface**: Interface for manual control and monitoring.
 
 ## Installation
 
-## Features
+### Prerequisites
+- **ROS2 Humble**: Ensure you have ROS2 Humble installed.
+- **Python 3**: Make sure Python 3 is installed.
 
-- WiFi scanning and attacks using ESP32 Marauder
-- Camera streaming using ESP32-CAM
-- Differential drive control for a two-wheeled robot
-- Communication via LoRaWAN or Zigbee
-
-## Directory Structure
-
-- `include/`: Header files for different functionalities.
-- `src/`: Source files for implementation.
-- `lib/`: External libraries for LoRaWAN and Zigbee.
-- `README.md`: Project documentation.
-- `platformio.ini`: PlatformIO configuration file.
-- `CMakeLists.txt`: CMake configuration file.
-
-## Setup
-
-1. Install [PlatformIO](https://platformio.org/) for your preferred IDE.
-2. Clone this repository:
-    ```sh
+### Steps
+1. **Clone the Repository**:
+    ```bash
     git clone https://github.com/yourusername/Tengu-Marauder.git
     cd Tengu-Marauder
     ```
-3. Build and upload the firmware to your ESP32 board:
-    ```sh
-    pio run --target upload
+
+2. **Setup ROS2 Workspace**:
+    ```bash
+    mkdir -p ~/ros2_ws/src
+    cd ~/ros2_ws/src
+    ln -s ~/path_to_cloned_repo/Tengu-Marauder .
+    cd ~/ros2_ws
+    colcon build
+    source install/setup.bash
     ```
 
-## Configuration
-
-Configure your WiFi, ROS, and communication settings in the `platformio.ini` and header files.
+3. **Install Python Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## Usage
 
-- Run the micro-ROS agent on your PC:
-    ```sh
-    ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
-    ```
+### Launching the Nodes
+To launch the Tengu Marauder system, use the provided launch file:
+```bash
+ros2 launch tengu_marauder tengu_marauder_launch.py
 
-- Power on or reset your ESP32. It should connect to the micro-ROS agent and start streaming camera data and performing network security tasks.
+Running Individual Nodes
+You can also run individual nodes separately for testing:
+
+ros2 run motor_control motor_control_node
+ros2 run xbee_comm xbee_comm_node
