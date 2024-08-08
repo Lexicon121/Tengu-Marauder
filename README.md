@@ -14,6 +14,7 @@ Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 
 ### Prerequisites
 - **ROS2 Humble**: Ensure you have ROS2 Humble installed.
 - **Python 3**: Make sure Python 3 is installed.
+- **djitellopy**: We were testing this on a DJI Tello with the dji tello py library pip install djitellopy
 
 ### Steps
 1. **Clone the Repository**:
@@ -41,7 +42,7 @@ Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 
 
 ### Launching the Nodes
 To launch the Tengu Marauder system, use the provided launch file:
-```bash
+```bash;
 ros2 launch tengu_marauder tengu_marauder_launch.py
 
 Running Individual Nodes
@@ -49,3 +50,14 @@ You can also run individual nodes separately for testing:
 
 ros2 run motor_control motor_control_node
 ros2 run xbee_comm xbee_comm_node
+```
+
+## Bill of Materials:
+- **Raspberry Pi 4**
+- **2x ttmotors**
+- **SunFounder Raspberry Pi Motor Hat**
+- **3D Printed Parts**
+    1. Outershell
+    2. Under 
+
+
