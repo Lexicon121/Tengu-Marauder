@@ -11,6 +11,9 @@ Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 
 
 ## Installation
 
+## Reccommended
+- **Motor Test**: Test motor function with motorcontrol.py under launch
+
 ### Prerequisites
 - **ROS2 Humble**: Ensure you have ROS2 Humble installed.
 - **Python 3**: Make sure Python 3 is installed.
@@ -58,6 +61,10 @@ ros2 run xbee_comm xbee_comm_node
 - **SunFounder Raspberry Pi Motor Hat**
 - **3D Printed Parts**
     1. Outershell
-    2. Under 
+    2. Undershell
+    3. Wheels
+    4. Back wheel
+
+
 
 
