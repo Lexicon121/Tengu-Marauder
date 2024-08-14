@@ -2,6 +2,10 @@
 
 Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 for advanced communication and control functionalities. This project leverages XBee modules for wireless communication and provides a modular framework for various robotic components, including motor control, data processing, and operator interfaces.
 
+I reccomend reading the Hackaday build guide for more in depth instructions on the physical build and programming process: https://hackaday.io/project/197212-tengu-maraduer 
+
+Our 3D printable files are available at: https://www.printables.com/model/964421-tengu-marauder-frame
+
 ## Features
 - **Motor Control**: Manage and control the motors of the robotic platform.
 - **XBee Communication**: Wireless communication using XBee modules.
