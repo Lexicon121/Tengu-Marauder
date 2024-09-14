@@ -3,3 +3,4 @@ digi-xbee
 setuptools
 numpy
 matplotlib
+msgs
