@@ -4,8 +4,9 @@ import tty
 from robot_hat import Motor, Pin, PWM
 
 # Initialize motor objects for the two-wheeled robot
-motor_right = Motor(pwm=PWM("D5"), dir=Pin("D6"))  # Right motor
-motor_left = Motor(pwm=PWM("D4"), dir=Pin("D7"))   # Left motor
+# Replace P1 and P2 with the correct PWM channels for "D5" and "D4"
+motor_right = Motor(pwm=PWM("P1"), dir=Pin("D6"))  # Right motor
+motor_left = Motor(pwm=PWM("P2"), dir=Pin("D7"))   # Left motor
 
 # Function to get keyboard input
 def get_key():
