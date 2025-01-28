@@ -21,28 +21,28 @@ def get_key():
 # Control functions for the two-wheeled robot
 def move_forward():
     print("Moving forward")
-    motor_right.forward(100)  # Right motor forward at speed 100
-    motor_left.forward(100)   # Left motor forward at speed 100
+    motor_right.set_speed(100)  # Right motor forward at speed 100
+    motor_left.set_speed(100)   # Left motor forward at speed 100
 
 def move_backward():
     print("Moving backward")
-    motor_right.backward(100)  # Right motor backward at speed 100
-    motor_left.backward(100)   # Left motor backward at speed 100
+    motor_right.set_speed(-100)  # Right motor backward at speed 100
+    motor_left.set_speed(-100)   # Left motor backward at speed 100
 
 def turn_left():
     print("Turning left")
-    motor_right.forward(100)   # Right motor forward at speed 100
-    motor_left.backward(100)   # Left motor backward at speed 100
+    motor_right.set_speed(100)   # Right motor forward at speed 100
+    motor_left.set_speed(-100)   # Left motor backward at speed 100
 
 def turn_right():
     print("Turning right")
-    motor_right.backward(100)  # Right motor backward at speed 100
-    motor_left.forward(100)    # Left motor forward at speed 100
+    motor_right.set_speed(-100)  # Right motor backward at speed 100
+    motor_left.set_speed(100)    # Left motor forward at speed 100
 
 def stop_motors():
     print("Stopping motors")
-    motor_right.stop()  # Stop right motor
-    motor_left.stop()   # Stop left motor
+    motor_right.set_speed(0)  # Stop right motor
+    motor_left.set_speed(0)   # Stop left motor
 
 # Start with motors stopped
 stop_motors()
