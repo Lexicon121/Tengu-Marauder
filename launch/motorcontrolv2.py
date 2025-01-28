@@ -1,11 +1,10 @@
 import sys
 import termios
 import tty
-from robot_hat import Motor, Pin, PWM
+from robot_hat import Motor
 
-# Initialize motor objects for the two-wheeled robot
-motor_right = Motor(pwm=PWM("P1"), dir=Pin("D6"))  # Right motor
-motor_left = Motor(pwm=PWM("P2"), dir=Pin("D7"))   # Left motor
+# Initialize the motor object
+motor = Motor()  # Create a motor object to control both motors
 
 # Function to get keyboard input
 def get_key():
@@ -21,28 +20,28 @@ def get_key():
 # Control functions for the two-wheeled robot
 def move_forward():
     print("Moving forward")
-    motor_right.set_speed(100)  # Right motor forward at speed 100
-    motor_left.set_speed(100)   # Left motor forward at speed 100
+    motor.wheel(100, 0)  # Right motor forward at speed 100
+    motor.wheel(100, 1)  # Left motor forward at speed 100
 
 def move_backward():
     print("Moving backward")
-    motor_right.set_speed(-100)  # Right motor backward at speed 100
-    motor_left.set_speed(-100)   # Left motor backward at speed 100
+    motor.wheel(-100, 0)  # Right motor backward at speed 100
+    motor.wheel(-100, 1)  # Left motor backward at speed 100
 
 def turn_left():
     print("Turning left")
-    motor_right.set_speed(100)   # Right motor forward at speed 100
-    motor_left.set_speed(-100)   # Left motor backward at speed 100
+    motor.wheel(-100, 0)  # Right motor backward at speed 100
+    motor.wheel(100, 1)   # Left motor forward at speed 100
 
 def turn_right():
     print("Turning right")
-    motor_right.set_speed(-100)  # Right motor backward at speed 100
-    motor_left.set_speed(100)    # Left motor forward at speed 100
+    motor.wheel(100, 0)  # Right motor forward at speed 100
+    motor.wheel(-100, 1) # Left motor backward at speed 100
 
 def stop_motors():
     print("Stopping motors")
-    motor_right.set_speed(0)  # Stop right motor
-    motor_left.set_speed(0)   # Stop left motor
+    motor.wheel(0, 0)  # Stop the right motor
+    motor.wheel(0, 1)  # Stop the left motor
 
 # Start with motors stopped
 stop_motors()
