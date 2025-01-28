@@ -18,26 +18,26 @@ def get_key():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
-# Control functions for the two-wheeled robot
+# Control functions for the two-wheeled robot with swapped logic
 def move_forward():
     print("Moving forward")
-    motor_right.speed(50)  # Right motor forward at 50% speed
-    motor_left.speed(50)   # Left motor forward at 50% speed
+    motor_right.speed(-50)  # Inverted: Right motor backward
+    motor_left.speed(-50)   # Inverted: Left motor backward
 
 def move_backward():
     print("Moving backward")
-    motor_right.speed(-50)  # Right motor backward at 50% speed
-    motor_left.speed(-50)   # Left motor backward at 50% speed
+    motor_right.speed(50)   # Inverted: Right motor forward
+    motor_left.speed(50)    # Inverted: Left motor forward
 
 def turn_left():
     print("Turning left")
-    motor_right.speed(50)   # Right motor forward at 50% speed
-    motor_left.speed(-50)   # Left motor backward at 50% speed
+    motor_right.speed(-50)  # Inverted: Right motor backward
+    motor_left.speed(50)    # Inverted: Left motor forward
 
 def turn_right():
     print("Turning right")
-    motor_right.speed(-50)  # Right motor backward at 50% speed
-    motor_left.speed(50)    # Left motor forward at 50% speed
+    motor_right.speed(50)   # Inverted: Right motor forward
+    motor_left.speed(-50)   # Inverted: Left motor backward
 
 def stop_motors():
     print("Stopping motors")
