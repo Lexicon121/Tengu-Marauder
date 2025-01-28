@@ -1,11 +1,11 @@
 import sys
 import termios
 import tty
-from robot_hat import Motor, Pin
+from robot_hat import Motor, Pin, PWM
 
 # Initialize motor objects for the two-wheeled robot
-motor_right = Motor(pwm=Pin("D5"), dir=Pin("D6"))  # Right motor
-motor_left = Motor(pwm=Pin("D4"), dir=Pin("D7"))   # Left motor
+motor_right = Motor(pwm=PWM("D5"), dir=Pin("D6"))  # Right motor
+motor_left = Motor(pwm=PWM("D4"), dir=Pin("D7"))   # Left motor
 
 # Function to get keyboard input
 def get_key():
