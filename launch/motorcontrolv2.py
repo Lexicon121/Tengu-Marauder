@@ -1,9 +1,22 @@
+import sys
+import termios
+import tty
 from robot_hat import Motor, PWM, Pin
-from time import sleep
 
-# Initialize motors
+# Initialize motor objects for the two-wheeled robot
 motor_right = Motor(PWM('P13'), Pin('D4'))  # Right motor (PWM on P13, direction on D4)
 motor_left = Motor(PWM('P12'), Pin('D5'))   # Left motor (PWM on P12, direction on D5)
+
+# Function to get keyboard input
+def get_key():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
 
 # Control functions for the two-wheeled robot
 def move_forward():
@@ -28,27 +41,31 @@ def turn_right():
 
 def stop_motors():
     print("Stopping motors")
-    motor_right.speed(0)  # Stop right motor
-    motor_left.speed(0)   # Stop left motor
+    motor_right.speed(0)  # Stop Right motor
+    motor_left.speed(0)   # Stop Left motor
+
+# Start with motors stopped
+stop_motors()
 
 # Main loop to listen for key presses
+print("Press 'W' to move forward, 'S' to move backward, 'A' to turn left, 'D' to turn right, and 'Space' to stop. Press 'Q' to quit.")
 try:
     while True:
-        command = input("Enter command ('w'=forward, 's'=backward, 'a'=left, 'd'=right, 'space'=stop, 'q'=quit): ").lower()
-        if command == 'w':
+        key = get_key()
+        if key == 'w':
             move_forward()
-        elif command == 's':
+        elif key == 's':
             move_backward()
-        elif command == 'a':
+        elif key == 'a':
             turn_left()
-        elif command == 'd':
+        elif key == 'd':
             turn_right()
-        elif command == ' ':
+        elif key == ' ':
             stop_motors()
-        elif command == 'q':
+        elif key == 'q':
             break
         else:
-            print("Invalid command. Try again.")
+            stop_motors()
 finally:
     stop_motors()
     print("Program terminated.")
