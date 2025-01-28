@@ -1,10 +1,15 @@
 import sys
 import termios
 import tty
-from robot_hat import Motor
+from robot_hat import Motor, Pin, PWM
 
-# Initialize the motor object
-motor = Motor()  # Create a motor object to control both motors
+# Initialize PWM objects for the motors
+pwm_right = PWM("P1")  # PWM for the right motor
+pwm_left = PWM("P2")   # PWM for the left motor
+
+# Set initial PWM frequency (e.g., 50 Hz)
+pwm_right.freq(50)
+pwm_left.freq(50)
 
 # Function to get keyboard input
 def get_key():
@@ -20,28 +25,28 @@ def get_key():
 # Control functions for the two-wheeled robot
 def move_forward():
     print("Moving forward")
-    motor.wheel(100, 0)  # Right motor forward at speed 100
-    motor.wheel(100, 1)  # Left motor forward at speed 100
+    pwm_right.pulse_width_percent(75)  # Right motor forward at 75% speed
+    pwm_left.pulse_width_percent(75)   # Left motor forward at 75% speed
 
 def move_backward():
     print("Moving backward")
-    motor.wheel(-100, 0)  # Right motor backward at speed 100
-    motor.wheel(-100, 1)  # Left motor backward at speed 100
+    pwm_right.pulse_width_percent(25)  # Right motor backward at 25% speed
+    pwm_left.pulse_width_percent(25)   # Left motor backward at 25% speed
 
 def turn_left():
     print("Turning left")
-    motor.wheel(-100, 0)  # Right motor backward at speed 100
-    motor.wheel(100, 1)   # Left motor forward at speed 100
+    pwm_right.pulse_width_percent(75)  # Right motor forward at 75% speed
+    pwm_left.pulse_width_percent(25)   # Left motor backward at 25% speed
 
 def turn_right():
     print("Turning right")
-    motor.wheel(100, 0)  # Right motor forward at speed 100
-    motor.wheel(-100, 1) # Left motor backward at speed 100
+    pwm_right.pulse_width_percent(25)  # Right motor backward at 25% speed
+    pwm_left.pulse_width_percent(75)   # Left motor forward at 75% speed
 
 def stop_motors():
     print("Stopping motors")
-    motor.wheel(0, 0)  # Stop the right motor
-    motor.wheel(0, 1)  # Stop the left motor
+    pwm_right.pulse_width_percent(0)  # Stop the right motor
+    pwm_left.pulse_width_percent(0)   # Stop the left motor
 
 # Start with motors stopped
 stop_motors()
