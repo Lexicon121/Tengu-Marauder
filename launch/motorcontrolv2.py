@@ -1,75 +1,54 @@
-import sys
-import termios
-import tty
-from robot_hat import Motor, Pin, PWM
+from robot_hat import Motor, PWM, Pin
+from time import sleep
 
-# Initialize PWM objects for the motors
-pwm_right = PWM("P1")  # PWM for the right motor
-pwm_left = PWM("P2")   # PWM for the left motor
-
-# Set initial PWM frequency (e.g., 50 Hz)
-pwm_right.freq(50)
-pwm_left.freq(50)
-
-# Function to get keyboard input
-def get_key():
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(fd)
-        ch = sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
+# Initialize motors
+motor_right = Motor(PWM('P13'), Pin('D4'))  # Right motor (PWM on P13, direction on D4)
+motor_left = Motor(PWM('P12'), Pin('D5'))   # Left motor (PWM on P12, direction on D5)
 
 # Control functions for the two-wheeled robot
 def move_forward():
     print("Moving forward")
-    pwm_right.pulse_width_percent(75)  # Right motor forward at 75% speed
-    pwm_left.pulse_width_percent(75)   # Left motor forward at 75% speed
+    motor_right.speed(50)  # Right motor forward at 50% speed
+    motor_left.speed(50)   # Left motor forward at 50% speed
 
 def move_backward():
     print("Moving backward")
-    pwm_right.pulse_width_percent(25)  # Right motor backward at 25% speed
-    pwm_left.pulse_width_percent(25)   # Left motor backward at 25% speed
+    motor_right.speed(-50)  # Right motor backward at 50% speed
+    motor_left.speed(-50)   # Left motor backward at 50% speed
 
 def turn_left():
     print("Turning left")
-    pwm_right.pulse_width_percent(75)  # Right motor forward at 75% speed
-    pwm_left.pulse_width_percent(25)   # Left motor backward at 25% speed
+    motor_right.speed(50)   # Right motor forward at 50% speed
+    motor_left.speed(-50)   # Left motor backward at 50% speed
 
 def turn_right():
     print("Turning right")
-    pwm_right.pulse_width_percent(25)  # Right motor backward at 25% speed
-    pwm_left.pulse_width_percent(75)   # Left motor forward at 75% speed
+    motor_right.speed(-50)  # Right motor backward at 50% speed
+    motor_left.speed(50)    # Left motor forward at 50% speed
 
 def stop_motors():
     print("Stopping motors")
-    pwm_right.pulse_width_percent(0)  # Stop the right motor
-    pwm_left.pulse_width_percent(0)   # Stop the left motor
-
-# Start with motors stopped
-stop_motors()
+    motor_right.speed(0)  # Stop right motor
+    motor_left.speed(0)   # Stop left motor
 
 # Main loop to listen for key presses
-print("Press 'W' to move forward, 'S' to move backward, 'A' to turn left, 'D' to turn right, and 'Space' to stop. Press 'Q' to quit.")
 try:
     while True:
-        key = get_key()
-        if key == 'w':
+        command = input("Enter command ('w'=forward, 's'=backward, 'a'=left, 'd'=right, 'space'=stop, 'q'=quit): ").lower()
+        if command == 'w':
             move_forward()
-        elif key == 's':
+        elif command == 's':
             move_backward()
-        elif key == 'a':
+        elif command == 'a':
             turn_left()
-        elif key == 'd':
+        elif command == 'd':
             turn_right()
-        elif key == ' ':
+        elif command == ' ':
             stop_motors()
-        elif key == 'q':
+        elif command == 'q':
             break
         else:
-            stop_motors()
+            print("Invalid command. Try again.")
 finally:
     stop_motors()
     print("Program terminated.")
