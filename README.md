@@ -18,6 +18,7 @@ Our 3D printable files are available at: https://www.printables.com/model/964421
 - **Operator Interface**: Interface for manual control and monitoring.
 
 ## Installation
+**https://hackaday.io/project/197212/instructions**
 
 ## Reccommended
 - **Motor Test**: Test motor function with motorcontrol.py under launch
@@ -64,15 +65,16 @@ ros2 run xbee_comm xbee_comm_node
 ```
 
 ## Bill of Materials:
-- **Raspberry Pi 4**
-- **2x ttmotors**
-- **SunFounder Raspberry Pi Motor Hat**
-- **3D Printed Parts**
+- **Raspberry Pi 4** : https://www.canakit.com/raspberry-pi-4-starter-max-aluminum-kit.html
+- **2x TTmotors**:  https://www.adafruit.com/product/3802
+- **SunFounder Raspberry Pi Motor Hat**:  https://tinyurl.com/56xck4md
+- **3D Printed Parts**: https://www.printables.com/model/964421-tengu-marauder-frame
     1. Outershell
     2. Undershell
     3. Wheels
     4. Back wheel
-
+- **ESP32-S3**: https://www.adafruit.com/product/5364
+- **Pre-Flashed Marauder Board**: https://www.pcbway.com/project/shareproject/Bruce_PCB_Smoochiee_d6a0284b.html 
 
 
 
