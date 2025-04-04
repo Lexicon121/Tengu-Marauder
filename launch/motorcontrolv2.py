@@ -19,11 +19,10 @@ def get_key():
 
 # Movement functions with left motor inverted
 def move_forward():
-    print("Moving forward")
-    motor_right.speed(50)
+    print("TEST: Left motor only (reverse)")
+    motor_right.speed(0)
     motor_left.speed(-50)
-    print("Set right motor to 50 (forward)")
-    print("Set left motor to -50 (forward, inverted)")
+
 
 
 def move_backward():
