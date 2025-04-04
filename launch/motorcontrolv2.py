@@ -5,7 +5,7 @@ from robot_hat import Motor, PWM, Pin
 
 # Initialize motor objects for the two-wheeled robot
 motor_right = Motor(PWM('P12'), Pin('D4'))  # Right motor (PWM on P13, direction on D4)
-motor_left = Motor(PWM('P13'), Pin('D5'))   # Left motor (PWM on P12, direction on D5)
+motor_left = Motor(PWM('P13'), Pin('D4'))   # Left motor (PWM on P12, direction on D5)
 
 # Function to get keyboard input
 def get_key():
