@@ -22,21 +22,21 @@ def get_key():
 def move_forward():
     print("Moving forward")
     motor_right.speed(50)  # Inverted: Right motor backward
-    motor_left.speed(-50)   # Inverted: Left motor backward
+    motor_left.speed(50)   # Inverted: Left motor backward
 
 def move_backward():
     print("Moving backward")
     motor_right.speed(-50)   # Inverted: Right motor forward
-    motor_left.speed(50)    # Inverted: Left motor forward
+    motor_left.speed(-50)    # Inverted: Left motor forward
 
 def turn_left():
     print("Turning left")
-    motor_right.speed(-50)  # Inverted: Right motor backward
+    motor_right.speed(50)  # Inverted: Right motor backward
     motor_left.speed(-50)    # Inverted: Left motor forward
 
 def turn_right():
     print("Turning right")
-    motor_right.speed(50)   # Inverted: Right motor forward
+    motor_right.speed(-50)   # Inverted: Right motor forward
     motor_left.speed(50)   # Inverted: Left motor backward
 
 def stop_motors():
