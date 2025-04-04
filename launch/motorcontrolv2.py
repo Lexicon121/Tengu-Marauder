@@ -21,7 +21,7 @@ def get_key():
 def move_forward():
     print("TEST: Right motor only (forward)")
     motor_right.speed(50)
-    motor_left.speed(0)
+    motor_left.speed(-50)
 
 
 def move_backward():
