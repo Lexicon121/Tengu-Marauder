@@ -21,7 +21,10 @@ def get_key():
 def move_forward():
     print("Moving forward")
     motor_right.speed(50)
-    motor_left.speed(-50)  # Inverted to move forward
+    motor_left.speed(-50)
+    print("Set right motor to 50 (forward)")
+    print("Set left motor to -50 (forward, inverted)")
+
 
 def move_backward():
     print("Moving backward")
