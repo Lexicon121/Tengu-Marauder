@@ -1,35 +1,43 @@
-from robot_hat import PWM, Pin, Motor
+from robot_hat import PWM, Pin
 
-# Initialize PWM for the motor (adjust "P1" for the correct pin)
-pwm = PWM("P1")  # PWM for motor speed control
-pwm.freq(50)     # Set PWM frequency to 50 Hz
+# Ask user for PWM and direction pins
+pwm_pin_input = input("Enter the PWM pin (e.g., P12, P13): ").strip().upper()
+dir_pin_input = input("Enter the direction pin (e.g., D4, D5, D6): ").strip().upper()
 
-# Initialize direction control for the motor
-direction_pin = Pin("D6")  # Direction control pin
+# Initialize motor pins
+try:
+    pwm = PWM(pwm_pin_input)
+    pwm.freq(50)
+    direction_pin = Pin(dir_pin_input)
+except Exception as e:
+    print(f"Error initializing pins: {e}")
+    exit(1)
 
 # Function to set motor speed and direction
 def set_motor(speed):
     if speed > 0:
-        direction_pin.value(1)  # Set direction to forward
+        direction_pin.value(1)  # Forward
     elif speed < 0:
-        direction_pin.value(0)  # Set direction to reverse
-        speed = -speed  # Use positive value for PWM
+        direction_pin.value(0)  # Reverse
+        speed = -speed
+    else:
+        speed = 0  # Stop
 
-    pwm.pulse_width_percent(speed)  # Set speed as a percentage (0-100)
+    pwm.pulse_width_percent(speed)
 
 # Motor Test
-print("Starting motor test...")
+print(f"Starting motor test on PWM: {pwm_pin_input}, DIR: {dir_pin_input}...")
 try:
     print("Moving forward at 50% speed")
-    set_motor(50)  # Forward at 50% speed
+    set_motor(50)
     input("Press Enter to continue...")
 
     print("Moving backward at 75% speed")
-    set_motor(-75)  # Backward at 75% speed
+    set_motor(-75)
     input("Press Enter to stop the motor...")
 
     print("Stopping motor")
-    set_motor(0)  # Stop the motor
+    set_motor(0)
 except KeyboardInterrupt:
     print("Test interrupted")
-    set_motor(0)  # Ensure motor stops on exit
+    set_motor(0)
