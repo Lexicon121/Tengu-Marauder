@@ -1,6 +1,11 @@
 # Tengu Marauder
 
-Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 for advanced communication and control functionalities. This project leverages wireless communication and provides a modular framework for various robotic components, including motor control, data processing, and operator interfaces.
+<p align="center">
+  <img src="./Images/Tengu Marauder GIF.gif" alt="Dancing Robot">
+</p>
+
+
+Tengu Marauder is a versatile ROS2-based robotic platform integrated with ESP32 for advanced communication and control functionalities. This project leverages wireless communication and provides a modular framework for various robotic components, including motor control, data processing, and operator interfaces. 
 
 I reccomend reading the Hackaday build guide for more in depth instructions on the physical build and programming process: https://hackaday.io/project/197212-tengu-maraduer 
 
@@ -10,6 +15,13 @@ Our 3D printable files are available at: https://www.printables.com/model/964421
 - **Ubuntu 24.04 Pi**: https://ubuntu.com/download/raspberry-pi
 - **ROS2 Humble Hawksbill**: https://docs.ros.org/en/humble/index.html
 - **Python 3.13.X**: https://www.python.org/downloads/
+- **SunFounder Robothat Drivers**: https://github.com/sunfounder/robot-hat
+
+## Development and Testing Build
+- **Ubuntu 24.04 Pi**: https://ubuntu.com/download/raspberry-pi
+- **ROS2 Jazzy Jalisco**: https://docs.ros.org/en/rolling/Releases/Release-Jazzy-Jalisco.html
+- **Python 3.13.X**: https://www.python.org/downloads/
+- **Customized SunFounder Robothat Drivers**: https://github.com/ExMachinaParlor/robot-hat
 
 ## Features
 - **Motor Control**: Manage and control the motors of the robotic platform.
@@ -52,6 +64,7 @@ Our 3D printable files are available at: https://www.printables.com/model/964421
 
 ## Usage
 
+We reccomend you install some sort of serial interface system on your Tengu Marauder. We use minicom to access the ESP32 Marauder onboard our current build.
 ### Launching the Nodes
 To launch the Tengu Marauder system, use the provided launch file:
 ```bash;
